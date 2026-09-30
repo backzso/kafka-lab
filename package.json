@@ -1,0 +1,37 @@
+{
+  "name": "kafka-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "infra:up": "docker compose up -d && npm run setup",
+    "infra:down": "docker compose down",
+    "infra:reset": "docker compose down -v && npm run infra:up",
+    "setup": "tsx scripts/setup.ts",
+    "clean": "tsx scripts/clean.ts",
+    "ex": "tsx scripts/run.ts",
+    "ex:solution": "IMPL=solution tsx scripts/run.ts",
+    "test:solutions": "IMPL=solution vitest run exercises",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.22",
+    "@nestjs/core": "^10.4.22",
+    "@nestjs/microservices": "^10.4.22",
+    "ioredis": "^5.4.1",
+    "kafkajs": "^2.2.4",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "@types/pg": "^8.11.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
+  }
+}
